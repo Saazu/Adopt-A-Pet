@@ -10,7 +10,7 @@ export default function Pet({ animal, name, breed, media, location, id }) {
     <a href={`/details/${id}`} className="pet">
       <div className="image-container">
         <img src={hero} alt={name} />
-        <div className="">
+        <div className="details">
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
         </div>

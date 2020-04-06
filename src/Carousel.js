@@ -6,6 +6,17 @@ class Carousel extends React.Component {
     active: 0,
   };
 
+  //using an arrow function means you dont have to worry about
+  //the execution context for "this"
+  //arrow functions do not create a new execution context
+  //if normal function used
+  //this.handleIndexClick = this.handleIndexClick.bind(this)
+  handleIndexClick = (event) => {
+    this.setState({
+      active: +event.target.dataset.index,
+    });
+  };
+
   //takes in a set of props, does some filtering on them
   //passes them on to children
   static getDerivedStateFromProps({ media }) {
@@ -13,12 +24,12 @@ class Carousel extends React.Component {
     if (media.length) {
       photos = media.map(({ large }) => large);
     }
-
+    console.log("Hi");
     return { photos };
   }
+
   render() {
     const { photos, active } = this.state;
-
     return (
       <div className="carousel">
         <img src={photos[active]} alt="animal" />

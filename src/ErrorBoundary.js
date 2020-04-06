@@ -5,12 +5,12 @@ import { Link, Redirect } from "@reach/router";
 class ErrorBoundary extends Component {
   state = { hasError: false, redirect: false };
 
-  static getDerivedStateFromProps() {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    console.error("Error Boundary caught and error", error, info);
+    console.error("Error Boundary caught an error", error, info);
   }
 
   componentDidUpdate() {

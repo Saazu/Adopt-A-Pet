@@ -5,10 +5,12 @@ import { Link, Redirect } from "@reach/router";
 class ErrorBoundary extends Component {
   state = { hasError: false, redirect: false };
 
+  //this helps to render a fallback UI
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
+  //logging information to relevant logger
   componentDidCatch(error, info) {
     console.error("Error Boundary caught an error", error, info);
   }
@@ -16,7 +18,6 @@ class ErrorBoundary extends Component {
   componentDidUpdate() {
     if (this.state.hasError) {
       setTimeout(() => this.setState({ redirect: true }), 5000);
-      console.log("Bye");
     }
   }
 
